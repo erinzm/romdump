@@ -7,6 +7,8 @@ extern crate panic_semihosting;
 // extern crate stm32f4xx_hal;
 use stm32f4xx_hal as hal;
 
+#[macro_use]
+mod pinblock;
 mod address_lines;
 
 use cortex_m_rt::entry;
