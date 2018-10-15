@@ -63,13 +63,30 @@ fn main() -> ! {
 
     // Separate out the sender and receiver of the serial port
     let (mut tx, mut rx_) = serial.split();
-/*
+
     // ---- pins for ROM ----
     let mut address_lines = AddressLines::new(
-        // TODO: fixme
-        // find 19 pins and into_push_pull_output() them.
+        gpioc.pc9.into_push_pull_output(),
+        gpiob.pb8.into_push_pull_output(),
+        gpiob.pb9.into_push_pull_output(),
+        gpiob.pb4.into_push_pull_output(),
+        gpiob.pb5.into_push_pull_output(),
+        gpiob.pb3.into_push_pull_output(),
+        gpioa.pa10.into_push_pull_output(),
+        gpioc.pc8.into_push_pull_output(),
+        gpioc.pc6.into_push_pull_output(),
+        gpioc.pc5.into_push_pull_output(),
+        gpioa.pa12.into_push_pull_output(),
+        gpioa.pa11.into_push_pull_output(),
+        gpiob.pb12.into_push_pull_output(),
+        gpiob.pb2.into_push_pull_output(),
+        gpiob.pb1.into_push_pull_output(),
+        gpiob.pb15.into_push_pull_output(),
+        gpiob.pb14.into_push_pull_output(),
+        gpiob.pb13.into_push_pull_output(),
+        gpioc.pc4.into_push_pull_output(),
     );
-*/
+
     let data_lines = DataLines::new(
         gpioa.pa5.into_floating_input(),
         gpioa.pa6.into_floating_input(),
