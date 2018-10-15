@@ -64,17 +64,10 @@ fn main() -> ! {
 
     // ---- pins for ROM ----
     let mut address_lines = AddressLines::new(
-        gpioa.pa5.into_push_pull_output(),
-        gpioa.pa6.into_push_pull_output(),
-        gpioa.pa7.into_push_pull_output(),
-        gpiob.pb6.into_push_pull_output(),
-        gpioc.pc7.into_push_pull_output(),
-        gpioa.pa9.into_push_pull_output(),
-        gpioa.pa8.into_push_pull_output(),
-        gpiob.pb10.into_push_pull_output(),
+        // TODO: fixme
+        // find nineteen pins and into_push_pull() them.
     );
 
-    address_lines.write(0xaa);
 
     loop {}
 }
