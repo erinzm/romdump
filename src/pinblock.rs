@@ -32,5 +32,24 @@ macro_rules! pin_block {
                 )*
             }
         }
+    };
+
+    {$name:ident: [impl $pintrait:ident] = [$($pin:ident: $pinp:ident),*]; read -> $readty:ty { $($readpin:ident -> $readbitpos:expr;)* }} => {
+        pin_block_struct!($name, $pintrait, [$($pin: $pinp),*]);
+
+        impl<$($pinp,)*> $name<$($pinp,)*>
+        where
+            $($pinp: $pintrait,)*
+        {
+            pub fn read(&self) -> $readty {
+                let mut v: $readty = 0;
+
+                $(
+                    v |= if self.$readpin.is_high() { (1 << $readbitpos ) } else { 0 };
+                )*
+
+                v
+            }
+        }
     }
 }

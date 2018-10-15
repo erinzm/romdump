@@ -10,6 +10,7 @@ use stm32f4xx_hal as hal;
 #[macro_use]
 mod pinblock;
 mod address_lines;
+mod data_lines;
 
 use cortex_m_rt::entry;
 use nb::block;
@@ -22,6 +23,7 @@ use core::fmt::Write;
 use cortex_m_semihosting::{debug, hio};
 
 use address_lines::AddressLines;
+use data_lines::DataLines;
 
 trait OutputPinBool: OutputPin {
     fn set_value(&mut self, val: bool) {
@@ -61,13 +63,18 @@ fn main() -> ! {
 
     // Separate out the sender and receiver of the serial port
     let (mut tx, mut rx_) = serial.split();
-
+/*
     // ---- pins for ROM ----
     let mut address_lines = AddressLines::new(
         // TODO: fixme
-        // find nineteen pins and into_push_pull() them.
+        // find 19 pins and into_push_pull_output() them.
     );
 
+    let mut data_lines = DataLines::new(
+        // TODO: fixme
+        // find 8 pins and into_floating_input() them.
+    );
+*/
 
     loop {}
 }
