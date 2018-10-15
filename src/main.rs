@@ -69,12 +69,20 @@ fn main() -> ! {
         // TODO: fixme
         // find 19 pins and into_push_pull_output() them.
     );
-
-    let mut data_lines = DataLines::new(
-        // TODO: fixme
-        // find 8 pins and into_floating_input() them.
-    );
 */
+    let data_lines = DataLines::new(
+        gpioa.pa5.into_floating_input(),
+        gpioa.pa6.into_floating_input(),
+        gpioa.pa7.into_floating_input(),
+        gpiob.pb6.into_floating_input(),
+        gpioc.pc7.into_floating_input(),
+        gpioa.pa9.into_floating_input(),
+        gpioa.pa8.into_floating_input(),
+        gpiob.pb10.into_floating_input(),
+    );
 
-    loop {}
+    loop {
+        let val = data_lines.read();
+        writeln!(tx, "{:08b}", val);   
+    }
 }
